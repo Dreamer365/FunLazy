@@ -1,135 +1,159 @@
 <br>
 <h1 align="center">FunLazy</h1>
 
-<h4 align="center">一个高性能的轻量级图片懒加载组件</h4>
+<h4 align="center">无任何依赖的轻量级图片懒加载组件</h4>
 
 <blockquote align="center">
-  <em>FunLazy</em> 是一个无任何依赖的图片懒加载组件，可以完美兼容桌面端和移动端的主流浏览器<br>
-组件在不同的浏览器中会自动选择最佳的懒加载方式，以此提高懒加载的性能
+  这是一个完全使用原生 JavaScript 开发的图片懒加载组件，可完美支持主流的现代高级浏览器<br>
+组件会优先使用 Intersection Observer API，以此提高懒加载的性能
 </blockquote>
 
 <h4 align="center"><a href="http://dreamer365.gitee.io/funlazy/" target="_blank">查看在线示例</a></h4>
 
-<h5 align="center">从 v2.0 版本开始，FunLazy 将不再依赖 jQuery，完全使用原生 JS 开发，同时不再兼容 IE8-<br>如果还有兼容 IE8- 的需求，可继续使用 v1.0 版本</h5>
 
-## 安装
-##### 本地引入
+
+## 安装组件
+#### 本地引入
 
 ```html
 <script src="funlazy.min.js"></script>
 ```
 
-##### cdn 引入
+#### cdn 引入
 
 ```html
 <script src="https://unpkg.com/funlazy@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/funlazy@latest/dist/funlazy.min.js"></script>
 ```
 
-##### npm 安装
+#### npm 安装
 
-```html
+```javascript
 npm i funlazy -S
 ```
-```html
+```javascript
 const FunLazy = require( "funlazy" );
 ```
+<hr/>
 
-## 用法
-##### 相对于窗口 - 纵向
+## 使用方法
+#### 最简单的用法是直接调用 `FunLazy` 函数：
+
 ```html
-<body>
-    <img data-funlazy="01.jpg" width="500" height="500">
-    <img data-funlazy="02.jpg" width="500" height="500">
-    <img data-funlazy="03.jpg" width="500" height="500">
-    <img data-funlazy="04.jpg" width="500" height="500">
-    <img data-funlazy="05.jpg" width="500" height="500">
-    <img data-funlazy="06.jpg" width="500" height="500">
-    <img data-funlazy="07.jpg" width="500" height="500">
-    <img data-funlazy="08.jpg" width="500" height="500">
-    <img data-funlazy="09.jpg" width="500" height="500">
-    <img data-funlazy="10.jpg" width="500" height="500">
-</body>
+<img data-funlazy="1.jpg" width="500" height="309">
+<img data-funlazy="2.jpg" width="500" height="309">
+<img data-funlazy="3.jpg" width="500" height="309">
 
 <script>
-    FunLazy({});
+    FunLazy();
 </script>
-````
+```
 
-##### 相对于窗口 - 横向
+#### 在 vue 单文件中使用：
+
 ```html
-<body>
-    <img data-funlazy="01.jpg" width="500" height="500">
-    <img data-funlazy="02.jpg" width="500" height="500">
-    <img data-funlazy="03.jpg" width="500" height="500">
-    <img data-funlazy="04.jpg" width="500" height="500">
-    <img data-funlazy="05.jpg" width="500" height="500">
-    <img data-funlazy="06.jpg" width="500" height="500">
-    <img data-funlazy="07.jpg" width="500" height="500">
-    <img data-funlazy="08.jpg" width="500" height="500">
-    <img data-funlazy="09.jpg" width="500" height="500">
-    <img data-funlazy="10.jpg" width="500" height="500">
-</body>
-
-<script>
-    FunLazy({
-        axis: "x"
-    });
-</script>
-````
-
-##### 相对于指定容器 - 纵向
-```html
-<div id="box" style="width:520px;height:500px;overflow-y:auto;">
-    <img data-funlazy="01.jpg" width="500" height="500">
-    <img data-funlazy="02.jpg" width="500" height="500">
-    <img data-funlazy="03.jpg" width="500" height="500">
-    <img data-funlazy="04.jpg" width="500" height="500">
-    <img data-funlazy="05.jpg" width="500" height="500">
-    <img data-funlazy="06.jpg" width="500" height="500">
-    <img data-funlazy="07.jpg" width="500" height="500">
-    <img data-funlazy="08.jpg" width="500" height="500">
-    <img data-funlazy="09.jpg" width="500" height="500">
-    <img data-funlazy="10.jpg" width="500" height="500">
-</body>
-
-<script>
-    FunLazy({
-        container: "#box"
-    });
-</script>
-````
-
-##### 相对于指定容器 - 横向
-```html
-<style>
-    img { float:left; }
-</style>
-<div id="box" style="width:520px;height:500px;overflow-x:auto;">
-    <div style="width:5000px;height:500px;">
-        <img data-funlazy="01.jpg" width="500" height="500">
-        <img data-funlazy="02.jpg" width="500" height="500">
-        <img data-funlazy="03.jpg" width="500" height="500">
-        <img data-funlazy="04.jpg" width="500" height="500">
-        <img data-funlazy="05.jpg" width="500" height="500">
-        <img data-funlazy="06.jpg" width="500" height="500">
-        <img data-funlazy="07.jpg" width="500" height="500">
-        <img data-funlazy="08.jpg" width="500" height="500">
-        <img data-funlazy="09.jpg" width="500" height="500">
-        <img data-funlazy="10.jpg" width="500" height="500">
+<template>
+    <div>
+        <img v-for="img of images" :key="img" :data-funlazy="img" width="500" height="309">
     </div>
-</body>
+</template>
 
 <script>
+    export default {
+        data () {
+            return {
+                images: [
+                    require( "./assets/img/1.jpg" ),
+                    require( "./assets/img/2.jpg" ),
+                    require( "./assets/img/3.jpg" )
+                ]
+            }
+        },
+        mounted () {
+            FunLazy();
+        }
+    }
+</script>
+```
+
+#### 可自定义配置项：
+
+```javascript
+FunLazy({
+    placeholder: "thumb.jpg",
+    effect: "fadeIn"
+});
+```
+
+#### 返回配置结果（v2.1.0 新增）：
+
+```javascript
+var opt = FunLazy({
+    placeholder: "thumb.jpg",
+    effect: "fadeIn"
+});
+
+// 根据传入的自定义配置项
+// 与默认的配置项进行合并
+// 返回合并之后的配置结果
+console.log( opt );
+```
+
+#### 自动侦测懒加载元素的变化（v2.1.0 新增）：
+
+```html
+<button>添加图片</button>
+<div>
+    <img data-funlazy="1.jpg" width="500" height="309">
+    <img data-funlazy="2.jpg" width="500" height="309">
+    <img data-funlazy="3.jpg" width="500" height="309">
+</div>
+
+<script>
+    var opt = FunLazy({
+        autoCheckChange: true
+    });
+
+    // 设置 autoCheckChange: true
+    // 新增加的图片会自动进行懒加载的解析
+    // -------------------------------
+    // 不过此属性不支持 IE9 - 10
+    // 在 IE9 - 10 中需要再次手动调用 FunLazy 函数来实现此功能
+    var target = document.querySelector( "div" );
+    document.querySelector( "button" ).addEventListener("click", function () {
+        target.insertAdjacentHTML( "beforeend", '<img data-funlazy="new.jpg" width="500" height="309">' );
+
+        // 支持 IE9 - 10
+        if ( navigator.userAgent.toLowerCase().match( /msie (9|10)\.0/ ) ) {
+            FunLazy( opt );
+        }
+    })
+</script>
+```
+
+#### 加载图片前对图片地址进行处理（v2.1.0 新增）：
+
+```html
+<img data-funlazy="1.jpg" width="500" height="309">
+<img data-funlazy="2.jpg" width="500" height="309">
+<img data-funlazy="3.jpg" width="500" height="309">
+
+<script>
+
+    // beforeLazy 属性可用于在图片进行懒加载操作之前
+    // 对图片地址进行最后的处理，相当于架设了一层拦截
+    // 可以很简单的在加载前对图片地址进行一次批量处理
     FunLazy({
-        container: "#box",
-        axis: "x"
+        beforeLazy: function ( src ) {
+            return src + "?id=" + Math.random().toString( 36 ).substr( 2, 10 );
+        }
     });
 </script>
-````
+```
 
 <hr/>
 
-<h2>API 参数</h2>
+## 配置参数
 <table>
     <tr>
         <td>参数</td>
@@ -207,19 +231,31 @@ const FunLazy = require( "funlazy" );
         <td>Function</td>
         <td>空函数</td>
     </tr>
+    <tr>
+        <td>beforeLazy<br>（v2.1.0 新增）</td>
+        <td>在进行懒加载操作前执行的函数，函数参数是图片地址（可用于在<br>开始加载图片之前对图片地址做最后的处理，并返回处理后的图片地址）</td>
+        <td>Function</td>
+        <td>空函数</td>
+    </tr>
+    <tr>
+        <td>autoCheckChange<br>（v2.1.0 新增）</td>
+        <td>自动检测目标元素内需要进行懒加载操作的元素的变化<br>（例如：动态添加新元素）并自动解析（不支持 IE 9 - 10）</td>
+        <td>Boolean</td>
+        <td>false</td>
+    </tr>
 </table>
 
 
 <hr/>
 
-<h2>开源协议</h2>
+## 开源协议
 <p><a href="https://gitee.com/dreamer365/FunLazy/blob/master/LICENSE">MIT License</a></p>
 
 <hr/>
 
-<h2>浏览器支持</h2>
+## 浏览器支持
 
-| Chrome       | Firefox      | Opera        | Edge         | Safari       | IE9+         |
-| ---          | ---          | ---          | ---          | ---          | ---          |
-|  支持  |  支持  |  支持  |  支持  |  支持  |  支持  |
+| Chrome | Safari | Edge | Firefox | Opera | IE |
+| --- | --- | --- | --- | --- | --- |
+| 支持 | 支持 | 支持 | 支持 | 支持 | 9+ |
 
