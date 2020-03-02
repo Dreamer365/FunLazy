@@ -249,7 +249,7 @@ console.log( opt );
 <hr/>
 
 ## 开源协议
-<p><a href="https://gitee.com/dreamer365/FunLazy/blob/master/LICENSE">MIT License</a></p>
+<p><a href="https://github.com/Dreamer365/FunLazy/blob/master/LICENSE">MIT License</a></p>
 
 <hr/>
 
