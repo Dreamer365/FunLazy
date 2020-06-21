@@ -151,7 +151,28 @@ console.log( opt );
 </script>
 ```
 
-<hr/>
+#### 当图片加载失败时使用指定的图片占位（v2.1.1 新增）：
+
+```html
+<img data-funlazy="1.jpg" width="500" height="309">
+<img data-funlazy="2.jpg" width="500" height="309">
+<img data-funlazy="3.jpg" width="500" height="309">
+
+<script>
+
+    // useErrorImagePlaceholder 属性可用于在图片加载失败时
+    // 用一张默认的图片进行占位显示
+    // - 设置为 true 则使用内置的灰色图进行占位
+    // - 传入图片地址则可以自定义占位图
+    FunLazy({
+        useErrorImagePlaceholder: true
+        
+        // 或者：
+        // useErrorImagePlaceholder: "img/error.jpg"
+    });
+</script>
+```
+
 
 ## 配置参数
 <table>
@@ -163,7 +184,7 @@ console.log( opt );
     </tr>
     <tr>
         <td>container</td>
-        <td>目标容器的选择器，默认基于 body</td>
+        <td>目标容器的选择器，默认基于 body，若传入 window, document, "html" 则统一转换为 "body"</td>
         <td>String</td>
         <td>body</td>
     </tr>
@@ -241,6 +262,12 @@ console.log( opt );
         <td>autoCheckChange<br>（v2.1.0 新增）</td>
         <td>自动检测目标元素内需要进行懒加载操作的元素的变化<br>（例如：动态添加新元素）并自动解析（不支持 IE 9 - 10）</td>
         <td>Boolean</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>useErrorImagePlaceholder<br>（v2.1.1 新增）</td>
+        <td>当图片加载失败时，使用指定的图片进行占位显示<br>（可使用内置灰色图或自定义图片）</td>
+        <td>Boolean / String</td>
         <td>false</td>
     </tr>
 </table>
