@@ -172,7 +172,7 @@ console.log( opt );
     });
 </script>
 ```
-
+<hr/>
 
 ## 配置参数
 <table>
