@@ -1,3 +1,8 @@
+### v2.1.1
+###### 2020-06-22
+- container 属性可传入 window, document, "html"，这三个值将会统一转换为 "body"；
+- 新增 useErrorImagePlaceholder 属性，用来设置当图片加载失败时的占位图片。
+
 ### v2.1.0
 ###### 2020-03-02
 - 使用默认配置时无需传入空对象；
