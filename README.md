@@ -201,12 +201,6 @@ console.log( opt );
         <td>base64 编码的灰图</td>
     </tr>
     <tr>
-        <td>errorPlaceholder</td>
-        <td>图片加载失败时的占位图片</td>
-        <td>String</td>
-        <td>""</td>
-    </tr>
-    <tr>
         <td>threshold</td>
         <td>边界值，单位：px</td>
         <td>Number</td>
