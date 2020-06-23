@@ -1,3 +1,7 @@
+### v2.1.2
+###### 2020-06-23
+- 移除了原来的 errorPlaceholder 属性，现统一使用 useErrorImagePlaceholder 代替。
+
 ### v2.1.1
 ###### 2020-06-22
 - container 属性可传入 window, document, "html"，这三个值将会统一转换为 "body"；
