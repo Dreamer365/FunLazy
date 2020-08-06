@@ -1,3 +1,7 @@
+### v2.1.3
+###### 2020-08-06
+- 修复在 chrome 51 - 57 浏览器中无法正常使用懒加载功能的 bug。
+
 ### v2.1.2
 ###### 2020-06-23
 - 移除了原来的 errorPlaceholder 属性，现统一使用 useErrorImagePlaceholder 代替。
