@@ -154,8 +154,9 @@ console.log( opt );
     // 设置 autoCheckChange: true
     // 新增加的图片会自动进行懒加载的解析
     // -------------------------------
+    // -------------------------------
     // 不过此属性不支持 IE9 - 10
-    // 在 IE9 - 10 中需要再次手动调用 FunLazy 函数来实现此功能
+    // 在 IE9 - 10 中需要再次手动调用 FunLazy 函数来实现此功能，例如：
     var target = document.querySelector( "div" );
     document.querySelector( "button" ).addEventListener("click", function () {
         target.insertAdjacentHTML( "beforeend", '<img data-funlazy="new.jpg" width="500" height="309">' );
