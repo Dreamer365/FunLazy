@@ -49,7 +49,7 @@ const FunLazy = require( "funlazy" );
 </script>
 ```
 
-#### 在 vue 单文件中使用：
+#### 在 vue 单文件中使用（vue2.x 写法）：
 
 ```html
 <template>
@@ -59,6 +59,7 @@ const FunLazy = require( "funlazy" );
 </template>
 
 <script>
+    const FunLazy = require( "funlazy" );
     export default {
         data () {
             return {
@@ -75,6 +76,42 @@ const FunLazy = require( "funlazy" );
     }
 </script>
 ```
+
+#### 在 vue 单文件中使用（vue3.x 写法）：
+
+```html
+<template>
+    <div>
+        <img v-for="img of imageData.images" :key="img" :data-funlazy="img" width="500" height="309">
+    </div>
+</template>
+
+<script>
+    import { reactive, onMounted } from "vue";
+    const FunLazy = require( "funlazy" );
+    export default {
+	      setup () {
+            const imageData = reactive({
+                images: [
+                    require( "./assets/img/10.jpg" ),
+                    require( "./assets/img/11.jpg" ),
+                    require( "./assets/img/12.jpg" ),
+                    require( "./assets/img/13.jpg" )
+                ]
+            });
+
+            onMounted(() => {
+                FunLazy();
+            })
+
+            return {
+                imageData
+            }
+        }
+    }
+</script>
+```
+
 
 #### 可自定义配置项：
 
