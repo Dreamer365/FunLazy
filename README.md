@@ -90,7 +90,7 @@ const FunLazy = require( "funlazy" );
     import { reactive, onMounted } from "vue";
     const FunLazy = require( "funlazy" );
     export default {
-	      setup () {
+        setup () {
             const imageData = reactive({
                 images: [
                     require( "./assets/img/10.jpg" ),
