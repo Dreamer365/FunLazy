@@ -23,15 +23,13 @@
 
 ```html
 <script src="https://unpkg.com/funlazy@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/funlazy@latest/dist/funlazy.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/funlazy@latest"></script>
 ```
 
 #### npm 安装
 
 ```javascript
 npm i funlazy -S
-```
-```javascript
 const FunLazy = require( "funlazy" );
 ```
 <hr/>
@@ -111,7 +109,6 @@ const FunLazy = require( "funlazy" );
     }
 </script>
 ```
-
 
 #### 可自定义配置项：
 
@@ -210,7 +207,9 @@ console.log( opt );
     });
 </script>
 ```
+
 <hr/>
+
 
 ## 配置参数
 <table>
@@ -285,6 +284,13 @@ console.log( opt );
         <td>空函数</td>
     </tr>
     <tr>
+        <td>strictLazyMode<br>（v2.1.4 新增）</td>
+        <td>严格懒加载模式，当此属性值为 true 时，懒加载元素如果满足以下任一条件，将不进行懒加载操作：<br>
+            1. 此元素本身处于隐藏状态<br>2. 此元素本身 opacity: 0<br>3. 此元素含有处于隐藏状态的祖先元素</td>
+        <td>Boolean</td>
+        <td>true</td>
+    </tr>
+    <tr>
         <td>beforeLazy<br>（v2.1.0 新增）</td>
         <td>在进行懒加载操作前执行的函数，函数参数是图片地址（可用于在<br>开始加载图片之前对图片地址做最后的处理，并返回处理后的图片地址）</td>
         <td>Function</td>
@@ -308,7 +314,7 @@ console.log( opt );
 <hr/>
 
 ## 开源协议
-<p><a href="https://github.com/Dreamer365/FunLazy/blob/master/LICENSE">MIT License</a></p>
+<p><a href="https://gitee.com/dreamer365/FunLazy/blob/master/LICENSE">MIT License</a></p>
 
 <hr/>
 
